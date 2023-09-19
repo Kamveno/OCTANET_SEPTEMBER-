@@ -1,0 +1,102 @@
+https://www.linkedin.com/posts/kamrup-mohapatra-28a161202_internship-octanetinternship-webdeveloper-activity-7109981910344376321-M3fn?utm_source=share&utm_medium=member_desktop(url)
+The url for the given code
+The code can be as,
+
+Html:<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>To-Do List</h1>
+        <input type="text" id="taskInput" placeholder="Add a new task">
+        <button id="addTask">Add</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+css:
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    background-color: #fff;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ccc;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+javascript:
+// Select DOM elements
+const taskInput = document.getElementById('taskInput');
+const addTaskButton = document.getElementById('addTask');
+const taskList = document.getElementById('taskList');
+
+// Event listener for adding tasks
+addTaskButton.addEventListener('click', () => {
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `
+            <span>${taskText}</span>
+            <button class="delete">Delete</button>
+        `;
+        taskList.appendChild(listItem);
+        taskInput.value = '';
+
+        // Event listener for deleting tasks
+        const deleteButton = listItem.querySelector('.delete');
+        deleteButton.addEventListener('click', () => {
+            taskList.removeChild(listItem);
+        });
+    }
+});
